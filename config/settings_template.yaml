@@ -1,0 +1,9 @@
+#--------------------#
+# settings_template.yaml
+# updater settings baked into every setup zip at build time, not read at runtime
+# see docs/DEVELOPER_SETUP.md, configure the update source
+#--------------------#
+updater:
+  repo: "RIT-EVT/CAN_opener"  # owner/name of the repo releases are published to
+  test_mode: false                # true reads a local mock feed instead of github (offline testing)
+  local_feed_path: null

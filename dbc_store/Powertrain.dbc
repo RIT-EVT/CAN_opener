@@ -1,0 +1,475 @@
+VERSION "0.1"
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: SIM100 Host HIB GFDB INV U2C VCU BMS
+VAL_TABLE_ OpCode_mux 229 "'error flags'" 228 "'battery voltage'" 227 "'voltages Vp and Vn'" 226 "'isolation capacitances'" 225 "'isolation resistances'" 224 "'isolation state'" 11 "'Serial number 3'" 10 "'Serial number 2'" 9 "'Serial number 1'" 8 "'Serial number 0'" 7 "'Version 2'" 6 "'Version 1'" 5 "'Version 0'" 4 " 'Part name 3'" 3 "'Part name 2'" 2 "'Part name 1'" 1 "'Part name 0'" ;
+VAL_TABLE_ SIM100_Request_mux 229 "Request 'error flags'" 228 "Request 'battery voltage'" 227 "Request 'voltages Vp and Vn'" 226 "Request 'isolation capacitances'" 225 "Request 'isolation resistances'" 224 "Request 'isolation state'" 11 "Request 'Serial number 3'" 10 "Request 'Serial number 2'" 9 "Request 'Serial number 1'" 8 "Request 'Serial number 0'" 7 "Request 'Version 2'" 6 "Request 'Version 1'" 5 "Request 'Version 0'" 4 "Request 'Part name 3'" 3 "Request 'Part name 2'" 2 "Request 'Part name 1'" 1 "Request 'Part name 0'" 240 "Set max battery design voltage" 193 "Restart SIM100 " 98 "Turn excitation pulse off" ;
+VAL_TABLE_ Restart_SIM100 19088743 "Signal to restart SIM100" ;
+VAL_TABLE_ Excitation_signal_off -559038945 "Turn off excitation pulse" ;
+
+BO_ 208 Throttle_Position_and_Errors: 8 HIB
+ SG_ Break_Voltage : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Throttle_Voltage : 0|32@1+ (1,0) [0|0] "V" Vector__XXX
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ INV_Buffer_Record : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ INV_Buffer_Segment : 0|8@1+ (1,0) [0|5] "" Vector__XXX
+ SG_ INV_Diag_Data_1 : 0|16@1- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ INV_Diag_Data_2 : 0|16@1- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ INV_Diag_Data_3 : 0|16@1- (1,0) [-32768|32767] "" Vector__XXX
+
+BO_ 2316304640 SIM100_Report: 8 SIM100
+ SG_ Vp_hi_res m97 : 15|32@0- (1,0) [0|0] "�V"  Host
+ SG_ Vn_hi_res m96 : 15|32@0- (1,0) [0|0] "�V"  Host
+ SG_ Max_battery_working_voltage m240 : 15|16@0+ (1,0) [0|0] "V" Vector__XXX
+ SG_ Temperature m128 : 15|32@0- (1,0) [0|0] "mCelsius"  Host
+ SG_ Serial_number_3 m11 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Serial_number_2 m10 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Serial_number_1 m9 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Serial_number_0 m8 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Version_2 m7 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Version_1 m6 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Version_0 m5 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Part_name_3 m4 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Part_name_2 m3 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Part_name_1 m2 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Hardware_Error m224 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Part_name_0 m1 : 8|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Err_CH m229 : 21|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ No_New_Estimates m224 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ High_Uncertaintly m224 : 13|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ High_Battery_Voltage m224 : 11|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Low_Battery_Voltage m224 : 10|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Isolation_status_bits m224 : 9|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Err_Vpwr m229 : 18|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Err_Vexi m229 : 19|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Err_VxR m229 : 20|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Err_Vx1 m229 : 22|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Err_Vx2 m229 : 23|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Vb_max_uncertainty m228 : 63|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ Vb_max m228 : 47|16@0+ (1,0) [0|0] "V" Vector__XXX
+ SG_ Vb_uncertainty m228 : 39|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ Vb m228 : 23|16@0+ (1,0) [0|0] "V"  Host
+ SG_ Vn_uncertainty m227 : 63|8@0- (1,0) [0|0] "%"  Host
+ SG_ Vn m227 : 47|16@0- (1,0) [0|0] "V"  Host
+ SG_ Vp_uncertainty m227 : 39|8@0- (1,0) [0|0] "%"  Host
+ SG_ Vp m227 : 23|16@0- (1,0) [0|0] "V"  Host
+ SG_ Cn_uncertainty m226 : 63|8@0+ (1,0) [0|0] "%"  Host
+ SG_ Cn m226 : 47|16@0+ (1,0) [0|0] "nF"  Host
+ SG_ Cp_uncertainty m226 : 39|8@0+ (1,0) [0|0] "%"  Host
+ SG_ Cp m226 : 23|16@0+ (1,0) [0|0] "nF"  Host
+ SG_ Rn_uncertainty m225 : 63|8@0+ (1,0) [0|0] ""  Host
+ SG_ Rn m225 : 47|16@0+ (1,0) [0|0] "kOhm"  Host
+ SG_ Rp_uncertainty m225 : 39|8@0+ (1,0) [0|0] "%"  Host
+ SG_ Rp m225 : 23|16@0+ (1,0) [0|0] "kOhm"  Host
+ SG_ Energy_stored_uncertainty m224 : 63|8@0+ (1,0) [0|0] "%"  Host
+ SG_ Energy_stored m224 : 47|16@0+ (1,0) [0|0] "mJ"  Host
+ SG_ Electrical_isolation_uncertainty m224 : 39|8@0+ (1,0) [0|0] "%"  Host
+ SG_ Electrical_isolation m224 : 23|16@0+ (1,0) [0|0] "Ohm/V"  Host
+ SG_ OpCode_mux M : 7|8@0+ (1,0) [0|0] ""  Host
+
+BO_ 2316304641 Request_from_Host: 5 Host
+ SG_ Restart m193 : 15|32@0+ (1,0) [0|0] ""  SIM100
+ SG_ Excitation_pulse_off m98 : 15|32@0+ (1,0) [0|0] ""  SIM100
+ SG_ Max_battery_working_voltage m240 : 15|16@0+ (1,0) [0|0] "V"  SIM100
+ SG_ Request_mux M : 7|8@0+ (1,0) [0|0] ""  SIM100
+
+BO_ 173 M173_Modulation_And_Flux_Info: 8 INV
+ SG_ INV_Iq_Command : 48|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Id_Command : 32|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Flux_Weakening_Output : 16|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Modulation_Index : 0|16@1- (0.0001,0) [0|3.2767] "" Vector__XXX
+
+BO_ 172 M172_Torque_And_Timer_Info: 8 INV
+ SG_ INV_Power_On_Timer : 32|32@1+ (0.003,0) [0|12884800] "time:sec" Vector__XXX
+ SG_ INV_Torque_Feedback : 16|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+ SG_ INV_Commanded_Torque : 0|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+
+BO_ 194 M194_Read_Write_Param_Response: 8 INV
+ SG_ INV_Write_Success : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Data_Response : 32|16@1- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ INV_Parameter_Address_Response : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 193 M193_Read_Write_Param_Command: 8 VCU
+ SG_ VCU_INV_Data_Command : 32|16@1- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ VCU_INV_Read_Write_Command : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_INV_Parameter_Address_Comman : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 192 M192_Command_Message: 8 VCU
+ SG_ VCU_INV_Inverter_Enable : 40|1@1+ (1,0) [0|1] "Bit" Vector__XXX
+ SG_ VCU_INV_Direction_Command : 32|1@1+ (1,0) [0|1] "Bit" Vector__XXX
+ SG_ VCU_INV_Speed_Command : 16|16@1- (1,0) [-32768|32767] "rpm" Vector__XXX
+ SG_ VCU_INV_Torque_Command : 0|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+ SG_ VCU_INV_Inverter_Discharge : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_INV_Torque_Limit_Command : 48|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+ SG_ VCU_INV_Speed_Mode_Enable : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_INV_RollingCounter : 44|4@1+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 171 M171_Fault_Codes: 8 INV
+ SG_ INV_Run_Fault_Hi : 48|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_Post_Fault_Hi : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_Run_Fault_Lo : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_Post_Fault_Lo : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 170 M170_Internal_States: 8 INV
+ SG_ INV_Direction_Command : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Inverter_Enable_State : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Relay_3_Status : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Relay_4_Status : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Relay_2_Status : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Inverter_Run_Mode : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Inverter_Command_Mode : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Relay_1_Status : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Inverter_State : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ INV_VSM_State : 0|8@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ INV_Inverter_Enable_Lockout : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Inverter_Discharge_State : 37|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ INV_Relay_5_Status : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Relay_6_Status : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_BMS_Active : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_BMS_Torque_Limiting : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Max_Speed_Limiting : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Low_Speed_Limiting : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Rolling_Counter : 44|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ INV_PWM_Frequency : 8|8@1+ (1,0) [0|255] "kHz" Vector__XXX
+ SG_ INV_Start_Mode_Active : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 169 M169_Internal_Voltages: 8 INV
+ SG_ INV_Reference_Voltage_12_0 : 48|16@1- (0.01,0) [-327.68|327.67] "voltage:V" Vector__XXX
+ SG_ INV_Reference_Voltage_5_0 : 32|16@1- (0.01,0) [-327.68|327.67] "voltage:V" Vector__XXX
+ SG_ INV_Reference_Voltage_2_5 : 16|16@1- (0.01,0) [-327.68|327.67] "voltage:V" Vector__XXX
+ SG_ INV_Reference_Voltage_1_5 : 0|16@1- (0.01,0) [-327.68|327.67] "voltage:V" Vector__XXX
+
+BO_ 168 M168_Flux_ID_IQ_Info: 8 INV
+ SG_ INV_Iq : 48|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Id : 32|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Flux_Feedback : 16|16@1- (0.001,0) [-32.768|32.767] "flux:Wb" Vector__XXX
+ SG_ INV_Flux_Command : 0|16@1- (0.001,0) [-32.768|32.767] "flux:Wb" Vector__XXX
+
+BO_ 167 M167_Voltage_Info: 8 INV
+ SG_ INV_VBC_Vq_Voltage : 48|16@1- (0.1,0) [-3276.8|3276.7] "voltage:V" Vector__XXX
+ SG_ INV_VAB_Vd_Voltage : 32|16@1- (0.1,0) [-3276.8|3276.7] "voltage:V" Vector__XXX
+ SG_ INV_Output_Voltage : 16|16@1- (0.1,0) [-3276.8|3276.7] "voltage:V" Vector__XXX
+ SG_ INV_DC_Bus_Voltage : 0|16@1- (0.1,0) [-3276.8|3276.7] "voltage:V" Vector__XXX
+
+BO_ 166 M166_Current_Info: 8 INV
+ SG_ INV_DC_Bus_Current : 48|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Phase_C_Current : 32|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Phase_B_Current : 16|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+ SG_ INV_Phase_A_Current : 0|16@1- (0.1,0) [-3276.8|3276.7] "current:A" Vector__XXX
+
+BO_ 165 M165_Motor_Position_Info: 8 INV
+ SG_ INV_Delta_Resolver_Filtered : 48|16@1- (0.1,0) [-3276.8|3276.7] "angle:deg" Vector__XXX
+ SG_ INV_Electrical_Output_Frequency : 32|16@1- (0.1,0) [-3276.8|3276.7] "frequency:Hz" Vector__XXX
+ SG_ INV_Motor_Speed : 16|16@1- (1,0) [-32768|32767] "angular_speed:rpm" Vector__XXX
+ SG_ INV_Motor_Angle_Electrical : 0|16@1+ (0.1,0) [0|6553.5] "angle:deg" Vector__XXX
+
+BO_ 164 M164_Digital_Input_Status: 8 INV
+ SG_ INV_Digital_Input_5 : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_4 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_3 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_2 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_1 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_6 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_7 : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_Digital_Input_8 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 163 M163_Analog_Input_Voltages: 8 INV
+ SG_ INV_Analog_Input_4 : 32|10@1+ (0.01,0) [0|10.23] "voltage:V" Vector__XXX
+ SG_ INV_Analog_Input_3 : 20|10@1+ (0.01,0) [0|10.23] "voltage:V" Vector__XXX
+ SG_ INV_Analog_Input_2 : 10|10@1+ (0.01,0) [0|10.23] "voltage:V" Vector__XXX
+ SG_ INV_Analog_Input_1 : 0|10@1+ (0.01,0) [0|10.23] "voltage:V" Vector__XXX
+ SG_ INV_Analog_Input_5 : 42|10@1+ (0.01,0) [0|10.23] "voltage:V" Vector__XXX
+ SG_ INV_Analog_Input_6 : 52|10@1+ (0.01,0) [0|10.23] "voltage:V" Vector__XXX
+
+BO_ 162 M162_Temperature_Set_3: 8 INV
+ SG_ INV_Torque_Shudder : 48|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+ SG_ INV_Motor_Temperature : 32|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_RTD5_Temperature : 16|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_RTD4_Temperature : 0|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+
+BO_ 161 M161_Temperature_Set_2: 8 INV
+ SG_ INV_RTD3_Temperature : 48|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_RTD2_Temperature : 32|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_RTD1_Temperature : 16|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_Control_Board_Temperature : 0|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+
+BO_ 160 M160_Temperature_Set_1: 8 INV
+ SG_ INV_Gate_Driver_Board : 48|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_Module_C : 32|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_Module_B : 16|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+ SG_ INV_Module_A : 0|16@1- (0.1,0) [-3276.8|3276.7] "temperature:C" Vector__XXX
+
+BO_ 174 M174_Firmware_Info: 8 INV
+ SG_ INV_Project_Code_EEP_Ver : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_SW_Version : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_DateCode_MMDD : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_DateCode_YYYY : 48|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 471 M187_U2C_Command_Txd: 8 INV
+ SG_ U2C_ID_Byte : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ U2C_Setpoint_Calc : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 469 M188_U2C_Message_Rxd: 8 U2C
+ SG_ INV_HV_Input_Current_Sensor_Vali : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_14V_Master_Fault : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_HV_Input_Current : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ INV_DTC_Status : 16|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ INV_DTC_Index : 19|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ INV_14V_Monitor : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ INV_14V_Conditional : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ INV_14V_Current_Monitor : 48|7@1+ (1,0) [0|127] "" Vector__XXX
+
+BO_ 514 BMS_Current_Limit: 8 BMS
+ SG_ INV_Max_Discharge_Current : 0|16@1+ (1,0) [0|1000] "current:A" Vector__XXX
+ SG_ INV_Max_Charge_Current : 16|16@1+ (1,0) [0|1000] "current:A" Vector__XXX
+
+BO_ 176 M176_Fast_Info: 8 INV
+ SG_ INV_Fast_Torque_Command : 0|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+ SG_ INV_Fast_Torque_Feedback : 16|16@1- (0.1,0) [-3276.8|3276.7] "torque:N.m" Vector__XXX
+ SG_ INV_Fast_Motor_Speed : 32|16@1- (1,0) [-32768|32767] "angular_speed:rpm" Vector__XXX
+ SG_ INV_Fast_DC_Bus_Voltage : 48|16@1- (0.1,0) [-3276.8|3276.7] "voltage:V" Vector__XXX
+
+BO_ 175 M175_Diag_Data_Message: 8 INV
+ SG_ INV_Diag_Record : 0|8@1+ (1,0) [0|160] "" Vector__XXX
+ SG_ INV_Diag_Segment M : 8|8@1+ (1,0) [0|5] "" Vector__XXX
+ SG_ INV_Diag_Gamma_Resolver m0 : 16|16@1- (0.1,0) [0|360] "angle:deg" Vector__XXX
+ SG_ INV_Diag_Gamma_Observer m0 : 32|16@1- (0.1,0) [0|360] "angle:deg" Vector__XXX
+ SG_ INV_Diag_Sin m0 : 48|16@1- (1,0) [-5|5] "voltage:V" Vector__XXX
+ SG_ INV_Diag_Cos m1 : 16|16@1- (1,0) [-5|5] "voltage:V" Vector__XXX
+ SG_ INV_Diag_Ia m1 : 32|16@1- (0.1,0) [-2000|2000] "current:A" Vector__XXX
+ SG_ INV_Diag_Ib m1 : 48|16@1- (0.1,0) [-2000|2000] "current:A" Vector__XXX
+ SG_ INV_Diag_Ic m2 : 16|16@1- (0.1,0) [-2000|2000] "current:A" Vector__XXX
+ SG_ INV_Diag_Vdc m2 : 32|16@1- (0.1,0) [0|1000] "voltage:V" Vector__XXX
+ SG_ INV_Diag_Iq_cmd m2 : 48|16@1- (0.1,0) [-2000|2000] "current:A" Vector__XXX
+ SG_ INV_Diag_Id_cmd m3 : 16|16@1- (0.1,0) [-2000|2000] "current:A" Vector__XXX
+ SG_ INV_Diag_Mod_Index m3 : 32|16@1- (0.0001,0) [0|2] "" Vector__XXX
+ SG_ INV_Diag_FW_Output m3 : 48|16@1- (0.1,0) [-2000|2000] "current:A" Vector__XXX
+ SG_ INV_Diag_Vq_Cmd m4 : 16|16@1- (0.1,0) [-1000|1000] "voltage:V" Vector__XXX
+ SG_ INV_Diag_Vd_Cmd m4 : 32|16@1- (0.1,0) [-1000|1000] "voltage:V" Vector__XXX
+ SG_ INV_Diag_Vqs_Cmd m4 : 48|16@1- (0.1,0) [-1000|1000] "voltage:V" Vector__XXX
+ SG_ INV_Diag_12V m5 : 16|16@1+ (0.01,0) [0|36] "voltage:V" Vector__XXX
+ SG_ INV_Diag_Run_Faults_Lo m5 : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ INV_Diag_Run_Faults_Hi m5 : 48|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+CM_ BU_ GFDB "Ground Fault Detection Board";
+CM_ BU_ HIB "Handle Bar Interface Board";
+CM_ BU_ INV "Cascadia Motion Inverter";
+CM_ BU_ U2C "Delphi DC/DC Converter";
+CM_ BU_ VCU "Vehicle Control Unit";
+CM_ BU_ BMS "BMS Master";
+
+CM_ BU_ SIM100 "Not 100% Sure but Probably GFDB";
+CM_ BU_ Host "Not Sure but Probably VCU";
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ BO_ 2316304640 "GFDB ReportResponse of SIM100 to Set Max_battery_working_voltage request from Host";
+CM_ SG_ 2316304640 Vp_hi_res "'Vp_hi_res' signal is the positive  terminal voltage with reference to chassis, reported in �V. It is calculated as the average over the last second and it is updated every 500 ms";
+CM_ SG_ 2316304640 Vn_hi_res "'Vn_hi_res' signal is the negative terminal voltage with reference to chassis, reported in �V. It is calculated as the average over the last second and it is updated every 500 ms";
+CM_ SG_ 2316304640 Max_battery_working_voltage "Sets the maximum battery operating voltage (in Volts)";
+CM_ SG_ 2316304640 Hardware_Error "0 � No hardware error 1 � Hardware error. The host should perform a �Read SIM100 Error Flags� operation in order to resolve the issue";
+CM_ SG_ 2316304640 Err_CH "0 - CH1 and CH2 connections are good (chassis connections) 1 - CH1 or CH2 connection is broken";
+CM_ SG_ 2316304640 No_New_Estimates "0 � The flag is zero when new and unread isolation values have been calculated. 1 � Isolation values have not been updated since the last read. ";
+CM_ SG_ 2316304640 High_Uncertaintly "0 � Uncertainty of calculated values is less than 5% 1 � Uncertainty values are higher than 5%.";
+CM_ SG_ 2316304640 High_Battery_Voltage "0 � Observed battery voltage is less than the specified Maximum Working Voltage. 1 � The observed battery voltage value is higher than the specified maximum working voltage value.";
+CM_ SG_ 2316304640 Low_Battery_Voltage "0 � Observed battery voltage higher than 15 V 1 � Observed battery voltage less than 15 V.";
+CM_ SG_ 2316304640 Isolation_status_bits "00 � Isolation status OK 10 � Warning. Isolation resistance < 500 Ohm/V limit. 11- Isolation fault. Isolation resistance <100 Ohm/V limit.";
+CM_ SG_ 2316304640 Err_Vpwr "0 - Power supply level is good 1 - Power supply level is out of range";
+CM_ SG_ 2316304640 Err_Vexi "0 - Excitation voltage level is correct 1 - Excitation voltage level is out of specs";
+CM_ SG_ 2316304640 Err_VxR "0 - VX1 and VX2 connections are correct 1 - VX1 and VX2 connections are reversed";
+CM_ SG_ 2316304640 Err_Vx1 "0 - VX1 connection is good (SIM100 to battery positive terminal connection) 1 - VX1 connection is brokenCH0";
+CM_ SG_ 2316304640 Err_Vx2 "0 - VX2 connection is good (SIM100 to battery negative terminal connection) 1 - VX2 connection is broken";
+CM_ SG_ 2316304640 Vb_max "Maximum value of IT power supply.  Must be set by the Host.  If not set by Host it becomes the maximum actual value recorded by SIM100MOD.  ";
+CM_ SG_ 2316304640 Vb "Reports voltage of the monitored IT power system.  The reported value is averaged and updated every100 ms.";
+CM_ SG_ 2316304640 Vn "Potential between negative IT system power rail and chassis.  
+Value is the average between two readings by the Host.  It is updated every 10 ms. 
+If two successive readings occur faster than 10 ms  SIM100 will report the previous value.";
+CM_ SG_ 2316304640 Vp "Potential between positive IT system power rail and chassis.  
+Value is the average between two readings by the Host.  It is updated every 10 ms. 
+If two successive readings occur faster than 10 ms  SIM100 will report the previously calculated value.";
+CM_ SG_ 2316304640 Cn_uncertainty "Cn estimate uncertainty expressed in %";
+CM_ SG_ 2316304640 Cn "Estimated value of capacitances Cn in nF.";
+CM_ SG_ 2316304640 Cp_uncertainty "Cp estimate uncertainty expressed in % 
+If the battery voltage is below 15 Volts or the battery is disconnected Cp returns the parallel combination value of Cp||Cn, and Cn returns 0xFFFF with uncertainty for Cn set to 0x00.";
+CM_ SG_ 2316304640 Cp "Estimated values of capacitance Cp.";
+CM_ SG_ 2316304640 Energy_stored "This is the maximum energy that can be stored in the parallel combination of Y capacitors between the battery and chassis at the maximum working voltage.";
+CM_ SG_ 2316304640 Electrical_isolation "Minimum resistance isolation path between the IT grounded system and the chassis. The value is calculated based on the battery�s Maximum Working Voltage.";
+CM_ SG_ 2316304640 OpCode_mux "Identifies the contents of the message";
+CM_ SG_ 2316304641 Restart "Restarts the operation of SIM100.";
+CM_ SG_ 2316304641 Excitation_pulse_off "Sending 0xDEADBE1F with SIM_Request_mux = 0x62 disables the excitation pulse of the SIM100.   In order to re-enable it a Restart message has to be sent.";
+CM_ SG_ 2316304641 Max_battery_working_voltage "Sets the maximum battery operating voltage (in Volts)";
+CM_ SG_ 173 INV_Iq_Command "The commanded Q-axis current";
+CM_ SG_ 173 INV_Id_Command "The commanded D-axis current";
+CM_ SG_ 173 INV_Flux_Weakening_Output "This is the current output of the flux regulator.";
+CM_ SG_ 173 INV_Modulation_Index "This is the modulation index. The scale factor is x100. To get the actual modulation index divide the value by 100.";
+CM_ SG_ 172 INV_Power_On_Timer "Updated every 3 msec. This will roll over in approximately 150 days!";
+CM_ SG_ 172 INV_Torque_Feedback "Estimated motor torque feedback";
+CM_ SG_ 172 INV_Commanded_Torque "The commanded Torque";
+CM_ BO_ 194 "The inverter response to each Parameter message that is received.";
+CM_ SG_ 194 INV_Write_Success "0=Write failure, 1=Success";
+CM_ SG_ 194 INV_Data_Response "All EEPROM data is 16 bits and is contained in bytes 4 and 5. Bytes 6 and 7 should be ignored.";
+CM_ SG_ 194 INV_Parameter_Address_Response "Valid EEPROM Parameter CAN addresses are between 100 and 499.";
+CM_ BO_ 193 "Parameter Message sent as needed by VCU to request info, change EEPROM, or command a function.";
+CM_ BO_ 192 "The command message is used to transmit data to the controller. This message is sent from a user supplied external controller to the PMxxx controller.";
+CM_ SG_ 171 INV_Run_Fault_Hi "Each bit represents a fault. Please refer to PM100 Users Manual for details.";
+CM_ SG_ 171 INV_Post_Fault_Hi "Each bit represents a fault. Please refer to PM100 Users Manual for details.";
+CM_ SG_ 171 INV_Run_Fault_Lo "Each bit represents a fault. Please refer to PM100 Users Manual for details.";
+CM_ SG_ 171 INV_Post_Fault_Lo "Each bit represents a fault. Please refer to PM100 Users Manual for details.";
+CM_ SG_ 170 INV_Direction_Command "1 = Forward
+0 = 'Reverse' if inverter enabled  & 'Stopped' if inverter is disabled";
+CM_ SG_ 170 INV_Inverter_Enable_State "0=Inverter Disabled, 
+1=Inverter Enabled";
+CM_ SG_ 170 INV_Relay_3_Status "0=OFF, 1=ON";
+CM_ SG_ 170 INV_Relay_4_Status "0=OFF, 1=ON";
+CM_ SG_ 170 INV_Relay_2_Status "0=OFF, 1=ON";
+CM_ SG_ 170 INV_Inverter_Run_Mode "0=Torque Mode, 1=Speed Mode";
+CM_ SG_ 170 INV_Inverter_Command_Mode "0=CAN mode, 1=VSM mode";
+CM_ SG_ 170 INV_Relay_1_Status "0=OFF, 1=ON";
+CM_ SG_ 170 INV_Inverter_State "Different states for the inverter state machine";
+CM_ SG_ 170 INV_VSM_State "Different states for the vehicle state machine";
+CM_ SG_ 170 INV_Inverter_Enable_Lockout "0=Lockout Disabled, 1=Lockout Enabled";
+CM_ SG_ 170 INV_Inverter_Discharge_State "0 = Disabled, 1 = Enabled, 2 = Speed Check, 3 = Active, 4 = Complete";
+CM_ SG_ 170 INV_Relay_5_Status "0=OFF, 1=ON";
+CM_ SG_ 170 INV_Relay_6_Status "0=OFF, 1=ON";
+CM_ SG_ 170 INV_BMS_Active "0 = BMS Not Active, 1 = BMS Active";
+CM_ SG_ 170 INV_BMS_Torque_Limiting "0 = Not Limiting, 1 = Limiting";
+CM_ SG_ 170 INV_Max_Speed_Limiting "0 = Not Limiting, 1 = torque limiting due to maximum speed";
+CM_ SG_ 170 INV_Low_Speed_Limiting "0 = Not Limiting, 1 = Current limiting due to low motor speed";
+CM_ SG_ 170 INV_Rolling_Counter "The current rolling counter value.";
+CM_ SG_ 170 INV_PWM_Frequency "The inverter PWM frequency";
+CM_ SG_ 170 INV_Start_Mode_Active "If in Key Switch Mode 1 then indicates status of Start input being applied.  0 = not active, 1 = active";
+CM_ SG_ 169 INV_Reference_Voltage_12_0 "12V Input Voltage";
+CM_ SG_ 169 INV_Reference_Voltage_5_0 "Transducer voltage";
+CM_ SG_ 169 INV_Reference_Voltage_2_5 "Internal reference voltage";
+CM_ SG_ 169 INV_Reference_Voltage_1_5 "Internal reference voltage";
+CM_ SG_ 168 INV_Iq "The measured Iq current";
+CM_ SG_ 168 INV_Id "The measured Id current";
+CM_ SG_ 168 INV_Flux_Feedback "The estimated flux";
+CM_ SG_ 168 INV_Flux_Command "The commanded flux";
+CM_ SG_ 167 INV_VBC_Vq_Voltage "Measured value of the voltage between Phase B and Phase C";
+CM_ SG_ 167 INV_VAB_Vd_Voltage "Measured value of the voltage betwen phase A and Phase B";
+CM_ SG_ 167 INV_Output_Voltage "The calculated value of the output voltage, in peak line-neutral volts";
+CM_ SG_ 167 INV_DC_Bus_Voltage "The actual measured value of the DC bus voltage";
+CM_ SG_ 166 INV_DC_Bus_Current "The Calculated DC Bus Current";
+CM_ SG_ 166 INV_Phase_C_Current "The measured value of Phase C current";
+CM_ SG_ 166 INV_Phase_B_Current "The measured value of Phase B current";
+CM_ SG_ 166 INV_Phase_A_Current "The measured value of Phase A current";
+CM_ SG_ 165 INV_Delta_Resolver_Filtered "Used in calibration of resolver angle adjustment.";
+CM_ SG_ 165 INV_Electrical_Output_Frequency "The actual electrical frequency of the inverter";
+CM_ SG_ 165 INV_Motor_Speed "The measured speed of the motor";
+CM_ SG_ 165 INV_Motor_Angle_Electrical "The Electrical Angle of the motor as read by the encoder or resolver";
+CM_ SG_ 164 INV_Digital_Input_5 "Status of Digital Input #5";
+CM_ SG_ 164 INV_Digital_Input_4 "Status of Digital Input #4";
+CM_ SG_ 164 INV_Digital_Input_3 "Status of Digital Input #3";
+CM_ SG_ 164 INV_Digital_Input_2 "Status of Digital Input #2";
+CM_ SG_ 164 INV_Digital_Input_1 "Status of Digital Input #1";
+CM_ SG_ 164 INV_Digital_Input_6 "Status of Digital Input #6";
+CM_ SG_ 164 INV_Digital_Input_7 "Status of Digital Input #7";
+CM_ SG_ 164 INV_Digital_Input_8 "Status of Digital Input #8";
+CM_ SG_ 163 INV_Analog_Input_4 "Voltage on Analog Input #4";
+CM_ SG_ 163 INV_Analog_Input_3 "Voltage on Analog Input #3";
+CM_ SG_ 163 INV_Analog_Input_2 "Voltage on Analog Input #2";
+CM_ SG_ 163 INV_Analog_Input_1 "Voltage on Analog Input #1";
+CM_ SG_ 163 INV_Analog_Input_5 "Voltage on Analog Input #5";
+CM_ SG_ 163 INV_Analog_Input_6 "Voltage on Analog Input #6";
+CM_ SG_ 162 INV_Torque_Shudder "Shudder compensation value of torque";
+CM_ SG_ 162 INV_Motor_Temperature "Motor Temperature Sensor";
+CM_ SG_ 162 INV_RTD5_Temperature "RTD 5 (PT100) Temperature (Gen 2 only)";
+CM_ SG_ 162 INV_RTD4_Temperature "RTD 4 (PT100) Temperature (Gen 2 only)";
+CM_ SG_ 161 INV_RTD3_Temperature "RTD input 3 (PT1000) Temperature";
+CM_ SG_ 161 INV_RTD2_Temperature "RTD input 2 (PT1000) Temperature";
+CM_ SG_ 161 INV_RTD1_Temperature "RTD input 1 (PT1000) Temperature";
+CM_ SG_ 161 INV_Control_Board_Temperature "Control Board Temperature";
+CM_ SG_ 160 INV_Gate_Driver_Board "Gate Driver Board Temperature";
+CM_ SG_ 160 INV_Module_C "IGBT Module C Temperature";
+CM_ SG_ 160 INV_Module_B "IGBT Module B Temperature";
+CM_ SG_ 160 INV_Module_A "IGBT Module A Temperature";
+CM_ BO_ 471 "Enable message sent to Delphi DC/DC converter.";
+CM_ BO_ 469 "Response from Delphi DC/DC converter.";
+CM_ BO_ 514 "Message sent by BMS for inverter DC current limiting.";
+CM_ SG_ 514 INV_Max_Discharge_Current "Maximum discharge current from BMS";
+CM_ SG_ 514 INV_Max_Charge_Current "Maximum charge current from BMS";
+CM_ BO_ 176 "To enable fast message set CAN ACTIVE MSGS HI WORD to 0xFFFE.  Setting to default value of 0xFFFF will disable the fast message.";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_  "ProtocolType" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 100000;
+BA_DEF_ SG_  "SystemSignalLongSymbol" STRING ;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "ProtocolType" "CANopen";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "SystemSignalLongSymbol" "";
+BA_ "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 172 10;
+BA_ "GenMsgCycleTime" BO_ 194 0;
+BA_ "GenMsgCycleTime" BO_ 193 0;
+BA_ "GenMsgCycleTime" BO_ 192 5;
+BA_ "GenMsgCycleTime" BO_ 171 100;
+BA_ "GenMsgCycleTime" BO_ 170 100;
+BA_ "GenMsgCycleTime" BO_ 169 100;
+BA_ "GenMsgCycleTime" BO_ 168 10;
+BA_ "GenMsgCycleTime" BO_ 167 10;
+BA_ "GenMsgCycleTime" BO_ 166 10;
+BA_ "GenMsgCycleTime" BO_ 165 10;
+BA_ "GenMsgCycleTime" BO_ 164 10;
+BA_ "GenMsgCycleTime" BO_ 163 10;
+BA_ "GenMsgCycleTime" BO_ 162 100;
+BA_ "GenMsgCycleTime" BO_ 161 100;
+BA_ "GenMsgCycleTime" BO_ 160 100;
+BA_ "GenMsgCycleTime" BO_ 176 3;
+BA_ "GenMsgCycleTime" BO_ 175 3;
+BA_ "SystemSignalLongSymbol" SG_ 193 VCU_INV_Parameter_Address_Comman "VCU_INV_Parameter_Address_Command";
+BA_ "SystemSignalLongSymbol" SG_ 469 INV_HV_Input_Current_Sensor_Vali "INV_HV_Input_Current_Sensor_Validity";
+VAL_ 2316304640 OpCode_mux 97 "'Vp high resolution'" 96 "'Vn high resolution'" 240 "'Max battery design voltage'" 128 "'Temperature'" 229 "'error flags'" 228 "'battery voltage'" 227 "'voltages Vp and Vn'" 226 "'isolation capacitances'" 225 "'isolation resistances'" 224 "'isolation state'" 11 "'Serial number 3'" 10 "'Serial number 2'" 9 "'Serial number 1'" 8 "'Serial number 0'" 7 "'Version 2'" 6 "'Version 1'" 5 "'Version 0'" 4 " 'Part name 3'" 3 "'Part name 2'" 2 "'Part name 1'" 1 "'Part name 0'" ;
+VAL_ 2316304641 Restart 19088743 "Signal to restart SIM100" ;
+VAL_ 2316304641 Excitation_pulse_off -559038945 "Turn off excitation pulse" ;
+VAL_ 2316304641 Request_mux 97 "Request 'Vp high resolution'" 96 "Request 'Vn high resolution'" 128 "Request 'Temperature'" 229 "Request 'error flags'" 228 "Request 'battery voltage'" 227 "Request 'voltages Vp and Vn'" 226 "Request 'isolation capacitances'" 225 "Request 'isolation resistances'" 224 "Request 'isolation state'" 11 "Request 'Serial number 3'" 10 "Request 'Serial number 2'" 9 "Request 'Serial number 1'" 8 "Request 'Serial number 0'" 7 "Request 'Version 2'" 6 "Request 'Version 1'" 5 "Request 'Version 0'" 4 "Request 'Part name 3'" 3 "Request 'Part name 2'" 2 "Request 'Part name 1'" 1 "Request 'Part name 0'" 240 "Set max battery design voltage" 193 "Restart SIM100 " 98 "Turn excitation pulse off" ;
+VAL_ 170 INV_Inverter_State 0 "Power up" 1 "Stop" 2 "Open Loop" 3 "Closed Loop" 4 "Internal State" 5 "Internal State" 6 "Internal State" 7 "Internal State" 8 "Idle Run" 9 "Idle Stop" 10 "Internal State" 11 "Intern State" 12 "Internal State" ;
+VAL_ 170 INV_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-charge active state" 3 "pre-charge complete state" 4 "VSM wait state" 5 "VSM ready state" 6 "Motor Running State" 7 "blink fault code state" 14 "Shutdown state for Key Switch Mode 1" 15 "Reset the inverter" ;
+SIG_GROUP_ 2316304640 Serial_number 1 : Serial_number_3 Serial_number_2 Serial_number_1 Serial_number_0;
+SIG_GROUP_ 2316304640 Version 1 : Version_2 Version_1 Version_0;
+SIG_GROUP_ 2316304640 Part_number 1 : Part_name_3 Part_name_2 Part_name_1 Part_name_0;
+SIG_GROUP_ 2316304640 Error_flags 1 : Err_CH Err_Vpwr Err_Vexi Err_VxR Err_Vx1 Err_Vx2;
+SIG_GROUP_ 2316304640 battery_voltage 1 : Vb_max_uncertainty Vb_max Vb_uncertainty Vb;
+SIG_GROUP_ 2316304640 voltages_Vp_and_Vn 1 : Vn_uncertainty Vn Vp_uncertainty Vp;
+SIG_GROUP_ 2316304640 isolation_capacitances 1 : Cn_uncertainty Cn Cp_uncertainty Cp;
+SIG_GROUP_ 2316304640 isolation_resistances 1 : Rn_uncertainty Rn Rp_uncertainty Rp;
+SIG_GROUP_ 2316304640 isolation_state 1 : Energy_stored_uncertainty Energy_stored Electrical_isolation_uncertainty Electrical_isolation;
+SIG_GROUP_ 2316304640 Status_bits 1 : Hardware_Error No_New_Estimates High_Uncertaintly High_Battery_Voltage Low_Battery_Voltage Isolation_status_bits;
+
+SG_MUL_VAL_ 2316304640 Hardware_Error OpCode_mux 224-229;
+SG_MUL_VAL_ 2316304640 No_New_Estimates OpCode_mux 224-229;
+SG_MUL_VAL_ 2316304640 High_Uncertaintly OpCode_mux 224-229;
+SG_MUL_VAL_ 2316304640 High_Battery_Voltage OpCode_mux 224-229;
+SG_MUL_VAL_ 2316304640 Low_Battery_Voltage OpCode_mux 224-229;
+SG_MUL_VAL_ 2316304640 Isolation_status_bits OpCode_mux 224-229;

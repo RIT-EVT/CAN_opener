@@ -1,0 +1,24 @@
+#--------------------#
+# .gitignore
+# generated files and local state kept out of git
+#--------------------#
+
+# local app state (settings.yaml holds the password hash)
+config/settings.yaml
+versions/
+logs_cache/
+
+# python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# build output and virtual environments, too large for github
+dist/
+build/
+.venv/
+venv/
+env/
+
+# personal editor settings
+.vscode/

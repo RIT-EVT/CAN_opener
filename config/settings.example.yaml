@@ -1,0 +1,15 @@
+#--------------------#
+# settings.example.yaml
+# reference copy of settings.yaml, never read by the app
+# field reference in docs/DEVELOPMENT.md, settings reference
+#--------------------#
+
+version: "0.1.0"
+active_theme: "dark"
+
+updater:
+  repo: ""              # owner/name of the release repo
+  test_mode: true       # true reads a local mock feed instead of github
+  local_feed_path: null # json feed file used in test mode
+
+dev_password_hash: ""   # bcrypt hash, default password is changeme

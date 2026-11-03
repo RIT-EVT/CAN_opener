@@ -1,0 +1,18 @@
+#--------------------#
+# platform_template.yaml
+# copy into config/platforms/ as <slug>.yaml to add a platform by hand
+# or use settings > developer options > manage platforms instead
+#--------------------#
+
+name: ""                # display name, e.g. 2026 ev chassis a
+description: ""         # shown when opening a log
+dbc_path: ""            # filename inside dbc_store/, e.g. platform_a.dbc
+image: null             # optional photo or diagram path
+
+# signals listed first in important values, exact names from the dbc
+# also editable in the app (advanced mode, pencil button)
+important_values:
+  - ""
+
+# free-form notes, not read by the app
+metadata: {}
