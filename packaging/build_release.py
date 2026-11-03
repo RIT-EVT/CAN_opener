@@ -7,6 +7,9 @@
 from __future__ import annotations
 
 import shutil
+import os
+import subprocess
+import tempfile
 import sys
 import zipfile
 from pathlib import Path
@@ -26,6 +29,7 @@ RELEASE_DIR = DIST_DIR / "release"
 LAUNCHER_EXE = DIST_DIR / "CANDecoderLauncher.exe"
 APP_DIR = DIST_DIR / "CANDecoder-app"
 SETTINGS_TEMPLATE = REPO_ROOT / "config" / "settings_template.yaml"
+APP_EXE = APP_DIR / "CANDecoder-app.exe"
 
 
 # arc_prefix is the folder inside the zip, blank puts the files at the zip root
@@ -95,6 +99,23 @@ def build_setup_zip(tag: str) -> Path:
     return out_path
 
 
+# -- frozen build self-test --
+
+# runs the built exe with --selftest and stops the release if anything is missing
+def run_selftest() -> None:
+    if not APP_EXE.exists():
+        raise SystemExit(f"Missing build output: {APP_EXE}. Run PyInstaller with build.spec first.")
+    with tempfile.TemporaryDirectory() as tmp:
+        report = Path(tmp) / "selftest.txt"
+        # run it the way a user would, without the launcher's data-root variable
+        env = {k: v for k, v in os.environ.items() if k != "CAN_DECODER_DATA_ROOT"}
+        result = subprocess.run([str(APP_EXE), "--selftest", str(report)], env=env, timeout=120)
+        text = report.read_text(encoding="utf-8") if report.exists() else "(no report written)"
+    if result.returncode != 0:
+        raise SystemExit(f"Self-test of the built app FAILED, release not built:\n{text}")
+    print("Self-test passed.")
+
+
 # -- cli --
 
 def main() -> int:
@@ -105,6 +126,7 @@ def main() -> int:
 
     if RELEASE_DIR.exists():
         shutil.rmtree(RELEASE_DIR)
+        run_selftest()
 
     app_zip = build_app_zip(tag)
     setup_zip = build_setup_zip(tag)

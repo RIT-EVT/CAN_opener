@@ -68,6 +68,20 @@ def test_sync_defaults_copies_bundled_defaults_into_data_root(tmp_path):
     assert copied.exists()
     assert copied.read_text() == "name: dark\n"
 
+    # regression, a frozen exe double-clicked without the launcher has app_root == code_root,
+# but its defaults sit under _internal/, so they still have to be copied out
+def test_sync_defaults_copies_when_frozen_and_run_directly(monkeypatch, tmp_path):
+    exe_dir = tmp_path / "CANDecoder-app-v1.2.0"
+    meipass = exe_dir / "_internal"
+    (meipass / "config" / "defaults").mkdir(parents=True)
+    (meipass / "config" / "defaults" / "dark_theme.yaml").write_text("name: dark\n")
+    monkeypatch.setattr(sys, "frozen", True, raising=False)
+    monkeypatch.setattr(sys, "_MEIPASS", str(meipass), raising=False)
+
+    main._sync_defaults(exe_dir, exe_dir)
+
+    assert (exe_dir / "config" / "defaults" / "dark_theme.yaml").exists()
+
 
 # new bundled defaults replace old ones, user files outside config/defaults are untouched
 def test_sync_defaults_overwrites_stale_bundled_defaults_but_not_user_files(tmp_path):

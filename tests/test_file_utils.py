@@ -33,3 +33,8 @@ def test_ensure_directories(tmp_path):
     assert (tmp_path / "logs_cache").is_dir()
     # versions/ lives beside the data root, not inside it
     assert not (tmp_path / "versions").exists()
+
+
+def test_copy_default_if_missing_skips_missing_source(tmp_path):
+    assert copy_default_if_missing(tmp_path / "nope.yaml", tmp_path / "out.yaml") is False
+    assert not (tmp_path / "out.yaml").exists()

@@ -52,6 +52,17 @@ UNUSED_EXCLUDES = ["matplotlib", "tkinter"]
 
 from pathlib import Path
 
+from PyInstaller.utils.hooks import collect_submodules, collect_data_files
+
+# these libraries load parts of themselves by name at runtime, which pyinstaller can't see
+# canmatrix.formats.dbc is the one that broke decoding on other pcs
+HIDDEN_IMPORTS = (
+    collect_submodules("canmatrix")
+    + collect_submodules("asammdf")
+    + collect_submodules("cantools")
+)
+EXTRA_DATAS = collect_data_files("canmatrix") + collect_data_files("cantools")
+
 REPO_ROOT = Path(SPECPATH).resolve().parent
 
 a = Analysis(
@@ -60,7 +71,8 @@ a = Analysis(
     datas=[
         # lands under _internal/, main.py finds it through sys._MEIPASS
         (str(REPO_ROOT / "config" / "defaults"), "config/defaults"),
-    ],
+    ] + EXTRA_DATAS,
+    hiddenimports=HIDDEN_IMPORTS,
     excludes=QT_UNUSED_EXCLUDES + UNUSED_EXCLUDES,
 )
 

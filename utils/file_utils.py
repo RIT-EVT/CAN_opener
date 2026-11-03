@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import os
+import logging
 import shutil
 from pathlib import Path
 from typing import Optional
@@ -33,8 +34,12 @@ def atomic_write_text(path: Path, content: str, encoding: Optional[str] = None) 
 
 
 # copies a default into place only if dst doesn't exist yet, returns true if it copied
+# a missing source is logged, not raised, so one absent default can't stop the app starting
 def copy_default_if_missing(src: Path, dst: Path) -> bool:
     if dst.exists():
+        return False
+    if not src.exists():
+        logging.getLogger(__name__).warning("Default file missing, skipped: %s", src)
         return False
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy(src, dst)

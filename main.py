@@ -70,16 +70,18 @@ CODE_ROOT = _code_root()
 APP_ROOT = resolve_data_root()
 
 
-# copies this version's bundled defaults into the data root (no-op in dev)
+# copies this version's bundled defaults into the data root
+# skipped only when source and destination are the same folder (running from source)
+# a frozen exe started directly, without the launcher, still needs the copy,
+# because pyinstaller puts the defaults under _internal/, not next to the exe
 def _sync_defaults(app_root: Path, code_root: Path) -> None:
-    if app_root == code_root:
-        return
     src = _bundled_defaults_dir(code_root)
-    if src.exists():
-        shutil.copytree(src, app_root / "config" / "defaults", dirs_exist_ok=True)
-
-
+    dst = app_root / "config" / "defaults"
+    if not src.exists() or src.resolve() == dst.resolve():
+        return
+    shutil.copytree(src, dst, dirs_exist_ok=True)
 # -- startup --
+
 
 def run(app_root: Path = APP_ROOT, code_root: Path = CODE_ROOT) -> int:
     # folders, defaults and settings
@@ -103,5 +105,35 @@ def run(app_root: Path = APP_ROOT, code_root: Path = CODE_ROOT) -> int:
     return qt_app.exec()
 
 
+# -- build self-test, run by packaging/build_release.py against the frozen exe --
+
+# imports by string on purpose, so pyinstaller can't "see" them and the test stays honest
+SELFTEST_MODULES = ["canmatrix.formats.dbc", "cantools.database", "asammdf"]
+SELFTEST_DEFAULTS = ["dark_theme.yaml", "light_theme.yaml"]
+
+
+# writes a report to report_path, returns 0 if everything is present
+# (no print: the windowed exe has no console, so stdout doesn't exist)
+def _selftest(report_path: str) -> int:
+    import importlib
+
+    failures = []
+    for name in SELFTEST_MODULES:
+        try:
+            importlib.import_module(name)
+        except Exception as exc:
+            failures.append(f"import {name} failed: {exc!r}")
+
+    defaults_dir = _bundled_defaults_dir(CODE_ROOT)
+    for name in SELFTEST_DEFAULTS:
+        if not (defaults_dir / name).exists():
+            failures.append(f"bundled default missing: {defaults_dir / name}")
+
+    Path(report_path).write_text("\n".join(failures) or "OK", encoding="utf-8")
+    return 1 if failures else 0
+
+
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--selftest":
+        sys.exit(_selftest(sys.argv[2]))
     sys.exit(run())
